@@ -1,15 +1,17 @@
 angular.module('loginApp').controller('loginCtrl', loginCrtFnt);
 
-loginCrtFnt.$inject = ['$scope', '$log'];
+loginCrtFnt.$inject = ['$scope', '$log', '$window', 'auth'];
 
-function loginCrtFnt($scope, $log) {
-    $scope.logAuth = function () {
-        $log.info('user login', $scope.user.login); 
-        $log.info('user pwd', $scope.user.pwd);
+function loginCrtFnt($scope, $log, $window, auth) {
+
+    $scope.getUserList = function() {
+        return auth.userList();
     };
 
-    $scope.logAuthObject = function(user) {
-        $log.info('user login', user.login); 
-        $log.info('user pwd', user.pwd);
+    $scope.logAuth= function(user) {
+    
+        if( auth.checkUser(user.login, user.pwd) ) {
+            $window.location.href = 'loginSuccess.html';
+        }
     };
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="loginApp" ng-controller="loginCtrl">
+<html lang="en" ng-app="loginApp" ng-controller="loginCtrl as vm">
 
 <head>
     <title>Watcher Login</title>
@@ -32,9 +32,12 @@
                                     <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password"
                                         ng-model="user.pwd">
                                 </div>
-                                <button type="button" class="btn" ng-click="logAuthObject(user)">Lets go!</button> </form>
-                                <p>Login : {{user.login}}</p>
+                                <button type="button" class="btn" ng-click="logAuth(user)">Lets go!</button> </form>
+                                <!--<p>Login : {{user.login}}</p>
                                 <p>Pwd : {{user.pwd}}</p>
+                                <ul ng-repeat="(key,value) in getUserList()">
+                                    <li>{{key}} : {{value}}</li>
+                                </ul>-->
                         </div>
                     </div>
                 </div>
@@ -46,6 +49,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="js/services/AuthService.js"></script>
     <script src="js/application/LoginApp.js"></script>
     <script src="js/controllers/LoginController.js"></script>
 </body>
